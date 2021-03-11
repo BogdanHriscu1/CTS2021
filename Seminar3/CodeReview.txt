@@ -10,3 +10,6 @@ Stage 1. Naming conventions
 - format the code
 
 -remove the hard-coded values aka "magic numbers"
+
+-validate the input values
+- replace the if-then-else checks dor the productType to a switch
