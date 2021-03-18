@@ -2,33 +2,13 @@ package ro.ase.csie.cts.lab3.stage2;
 
 import ro.ase.csie.cts.lab3.exception.InvalidAccountAgeException;
 import ro.ase.csie.cts.lab3.exception.InvalidPriceException;
+import ro.ase.csie.cts.lab3.stage3.MarketingInterface;
+import ro.ase.csie.cts.lab3.stage3.ValidatingInterface;
 
 public class Product {
 	
-	public final static int MAX_ACCOUNT_AGE = 10;
-	public final static float MAX_FIDELITY_DISCOUNT = 0.15f;
-	
-	
-	public static void validatePrice(float price) throws InvalidPriceException {
-			
-		if(price <= 0) {
-			throw new InvalidPriceException();
-		}
-	}
-	
-	
-	public static void validateAccountAge(int accountAgeInYears) throws InvalidAccountAgeException {
-		
-		if(accountAgeInYears < 0) {
-			throw new InvalidAccountAgeException();
-		}
-	}
-	
-	
-	public static float getFidelityDiscount(int accountAgeInYears) {
-		
-		return (accountAgeInYears > MAX_ACCOUNT_AGE) ? MAX_FIDELITY_DISCOUNT : (float) accountAgeInYears / 100;
-	}
+	MarketingInterface mkService = null;
+	ValidatingInterface validatorService = null;	
 	
 	public static float getPriceWithDiscount(float initialPrice, float discountValue) {
 		
@@ -37,10 +17,10 @@ public class Product {
 	
 	public float getFinalPrice(ProductType productType, float initialPrice, int accountAgeInYears) throws InvalidPriceException, InvalidAccountAgeException {
 		
-		validatePrice(initialPrice);
-		validateAccountAge(accountAgeInYears);
+		validatorService.validatePrice(initialPrice);
+		validatorService.validateAccountAge(accountAgeInYears);
 		
-		float fidelityDiscount = (productType == ProductType.NEW)?0:getFidelityDiscount(accountAgeInYears);
+		float fidelityDiscount = (productType == ProductType.NEW)?0:mkService(accountAgeInYears);
 		
 		float discountValue = productType.getDiscount();
 		float priceWithDiscount = getPriceWithDiscount(initialPrice, discountValue);
