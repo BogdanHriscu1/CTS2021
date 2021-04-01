@@ -1,0 +1,15 @@
+package ro.ase.acs.cts.dp.prototype;
+
+public class TestPrototype {
+
+	public static void main(String[] args) throws CloneNotSupportedException {
+		
+		Char3DModel mickeyMouse1 = new Char3DModel(CharacterType.DISNEY, "red");
+//		Char3DModel mickeyMouse2 = new Char3DModel(CharacterType.DISNEY, "red");
+//		Char3DModel mickeyMouse3 = new Char3DModel(CharacterType.DISNEY, "red");
+//		Char3DModel mickeyMouse4 = new Char3DModel(CharacterType.DISNEY, "red");
+		Char3DModel mickeyMouse2 = (Char3DModel) mickeyMouse1.clone();
+		Char3DModel mickeyMouse3 = (Char3DModel) mickeyMouse1.clone();
+	}
+
+}
