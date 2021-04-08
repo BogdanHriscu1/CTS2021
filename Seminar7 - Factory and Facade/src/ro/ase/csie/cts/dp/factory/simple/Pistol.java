@@ -4,7 +4,7 @@ public class Pistol extends AbstractWeapon {
 
 	
 	
-	protected Pistol(String color, int power) {
+	public Pistol(String color, int power) {
 		super(color, power);
 		
 	}
