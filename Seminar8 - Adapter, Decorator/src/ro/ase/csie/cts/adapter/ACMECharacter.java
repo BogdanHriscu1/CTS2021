@@ -14,10 +14,11 @@ public abstract class ACMECharacter {
 	public int getLifePoints() {
 		return lifePoints;
 	}
-	public void setLifePoints(int lifePoints) {
-		this.lifePoints = lifePoints;
-	}
 	
+	public String getName() {
+		return name;
+	}
+
 	public abstract void move();
 	public abstract void takeAHit(int points);
 	public abstract void heal(int points);
